@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SWOT Nile Monitoring System</title>
+    <!-- Leaflet & Plotly Libraries -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="icon" href="data:,">
+    <script src="https://cdn.plot.ly/plotly-2.24.1.min.js"></script>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+    <div class="grid-container">
+        <!-- 1. HEADER  -->
+        <header class="main-header">
+            <h1>Upper Victoria Nile: SWOT Monitoring System (Demo)</h1>
+        </header>
+
+        <!-- 2. SIDEBAR  -->
+        <nav class="sidebar">
+            <h4>SWOT Data</h4>
+            <select id="reach-selector" class="menu-select">
+                <option value="">Select a Reach...</option>
+            </select>
+            <button id="btn-wse" class="menu-btn">Water Surface Elevation</button>
+            <button id="btn-width" class="menu-btn">River Width</button>
+            <button id="btn-slope" class="menu-btn">Mean Slope</button>
+            <h4>Data Estimations</h4>
+
+            <button id="btn-q" class="menu-btn">River Discharge</button>
+        </nav>
+
+        <!-- 3. MAP -->
+        <section id="map-section">
+            <div id="map"></div>
+        </section>
+
+        <!-- 4. GRAPH -->
+        <section id="graph-section">
+            <div id="main_chart"></div>
+        </section>
+    </div>
+
+    <!-- JS de Leaflet -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        window.map = L.map('map').setView([0.85, 33.0], 9);
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+            attribution: '&copy; OpenStreetMap &copy; CARTO'
+        }).addTo(window.map);
+
+    </script>
+    <script src="{{ url_for('dynamic_logic_script') }}"></script>
+</body>
+
+</html>
